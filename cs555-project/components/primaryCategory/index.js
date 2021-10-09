@@ -11,7 +11,10 @@ const PrimaryCategory = () => {
             <Spacer/>
             <Select size='sm' mb='20px'>
                 <option>Select one issue</option>
-                <option>I have problems at my workplace</option>
+                <option>Are you exhausted after a day at work?</option>
+                <option>Do you worry about finances?</option>
+                <option>Do you feel confident at work?</option>
+
             </Select>
             <Button rightIcon={<BiRightArrow/>} bg='brand.900' size='lg'>
                 Next
