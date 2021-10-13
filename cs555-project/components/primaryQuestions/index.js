@@ -42,7 +42,7 @@ const Questions = () => {
         :
         <SlideFade in={isOpen} offsetY="50px">
                 {isOpen && <Container alignItems='center' pt='10%' pb='10%' textAlign='center' >
-                    <Text mb='50px' fontSize='4xl' color='brand.900'>We have some questions curated for you, so lets get started...</Text>
+                    <Text mb='50px' fontSize='4xl' color='brand.900'>We have some questions created for you, so lets get started...</Text>
                 </Container>}
             </SlideFade>
     );

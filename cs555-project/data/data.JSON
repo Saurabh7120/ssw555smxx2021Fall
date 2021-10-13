@@ -28,5 +28,63 @@
             ]
         }
         
+    },
+
+    "I have problems in school":{
+
+        "Are you not willing to go to school?":{
+            "questions":[
+                "How comfortable are you in the class? ",
+                "How well are you able to cope up with the subjects?",
+                "How difficult are you when you are facing the faculty?"
+            ]
+        },
+
+        "Are you not happy with your grades?":{
+            "questions":[
+                "How much satisfied are you after receiving your grades? ",
+                "How much are the external factors affecting your grades? ",
+                "How much is the effort put for studying reflecting in your grades?",
+                "How much scared are you for exams overnight?"
+            ]
+        },
+
+        "Do you face bullying at school?":{
+            "questions":[
+                "Rate the severity of bullying you are facing",
+                "How much traumatized are you after bullying ?"
+            ]
+        }
+    },
+
+    "I have problems with personal relationship":{
+        "Do you have any issues with your family?":{
+            "questions":[
+                "How much is your family issue affecting your mental health?",
+                "How well connected are you with your family?",
+                "How well does your family support you?",
+                "How much pressure are you facing from your family?"
+            ]
+        },
+
+        "Are you facing any problems in love?":{
+            "questions":[
+                "How well connected are you and your partner?",
+                "How much does your partner understands you?"
+            ]
+        },
+
+        "Do you face any difficulties in expressing your opinions?":{
+            "questions":[
+                "How well is your relationship with your relatives?",
+                "How well do you communicate with people?"
+            ]
+        }
+
+
     }
+
+
+
+
 }
