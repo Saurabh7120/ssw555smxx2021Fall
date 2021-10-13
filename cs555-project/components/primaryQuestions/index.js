@@ -29,14 +29,20 @@ const Questions = () => {
         if(currentIndex < primaryQuestions.length) setCurrentIndex(prevValue => prevValue + 1)
     }
 
+    const handleBack = () => {
+        if(currentIndex > 0) setCurrentIndex(prevValue => prevValue - 1)
+    }
+
     return (
         !forward ? primaryQuestions && <SlideFade in={!isOpen} offsetY='50px'>
             <QuestionLayout 
                 primary={true}
                 question={primaryQuestions[currentIndex]}
+                index={currentIndex}
                 handleNext={handleNext}
                 response={currentQuestionResponse}
                 handleChange={value => setCurrentQuestionResponse(value)}
+                handleBack={handleBack}
         />
         </SlideFade>
         :
