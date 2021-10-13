@@ -1,0 +1,32 @@
+{
+    "I have problems at my workplace":{
+        "Do you face low energy levels after a day at work?":{
+            "questions":[
+                    "How much have your sleeping habits changed since you started work here?",
+                    "How much has your appetite changed since you started working here?",
+                    "How moody are you at work?",
+                    "How much have your relationships suffered as a result of work?",
+                    "How much of your outside commitments (anything you do other than work, e.g. basketball) suffered because of work?"
+            ]
+        },
+        "Do you ever worry about finances?":{
+            "questions":[
+                "How satisfied are you with your salary?",
+                "How much do you worry about losing your job?",
+                "How upset are you during your payday?",
+                "Assuming no privacy issues, are you feeling comfortable letting other people know your salary?",
+                "How much do you worry about meeting your expenses?"
+            ]
+        },
+        "Do you feel confident at work?":{
+            "questions":[
+                "How comfortable are you with your bosses and colleagues?",
+                "Do you see yourself as a capable person?",
+                "How much do you struggle on completing tasks of your work?",
+                "How often do you work under pressure?",
+                "How will you rate your mental state at work? Really good is 10, really bad is 1"
+            ]
+        }
+        
+    }
+}
