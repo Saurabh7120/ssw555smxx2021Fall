@@ -12,7 +12,7 @@ const QuestionLayout = ({primary,question,handleNext,response,handleChange}) => 
             <Text mb='20px' fontSize='2xl' >{question}</Text>
             <Spacer/>
             <RadioGroup value={response} onChange={value => handleChange(value)}  mb='40px' pl='15px'>
-                {primary ? <Stack spacing={5} direction="row" >
+                {primary ? <Stack spacing={19} direction="row" marginLeft = '170px'>
                     <Radio colorScheme="gray" value={"true"}>
                     Yes
                     </Radio>
@@ -21,7 +21,7 @@ const QuestionLayout = ({primary,question,handleNext,response,handleChange}) => 
                     </Radio>
                 </Stack>
                 :
-                <Stack spacing={5} direction="row">
+                <Stack spacing={5} direction="row" marginLeft = '-28px'>
                     <Radio colorScheme="gray" value={"1"}>
                     1
                     </Radio>
