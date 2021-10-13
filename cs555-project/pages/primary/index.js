@@ -1,12 +1,12 @@
 import { Text } from "@chakra-ui/layout"
 import {Layout} from "../../components/core"
-import { SubQuestions } from "../../components/subQuestions"
+import { Questions } from "../../components/primaryQuestions"
 
 
-export default function Home() {
+export default function Primary() {
   return (
     <Layout>
-      <SubQuestions/>
+      <Questions/>
     </Layout>
   )
 }

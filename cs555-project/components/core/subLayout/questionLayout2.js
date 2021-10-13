@@ -15,12 +15,6 @@ const QuestionLayout2 = ({questionNumber,question,handleNext}) => {
             <RadioGroup value={answer} onChange={value => setAnswer(parseInt(value))} mb='40px' pr='40px' marginTop = "50px" 
             marginLeft = "-50px">
                 <Stack spacing={8} direction="row">
-                    {/* <Radio colorScheme="gray" value={1}>
-                    Yes
-                    </Radio>
-                    <Radio colorScheme="gray" value={2}>
-                    No
-                    </Radio> */}
                     <Radio colorScheme="gray" value={1}>
                     1
                     </Radio>
