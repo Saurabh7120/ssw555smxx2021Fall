@@ -1,17 +1,29 @@
-import { Container, Text,Spacer,Stack,Button, Radio, RadioGroup  } from '@chakra-ui/react';
-import {BiRightArrow} from 'react-icons/bi'
-import React,{useState} from 'react';
+import { Container, Text,Spacer,Stack,Button, Radio, RadioGroup ,IconButton } from '@chakra-ui/react';
+import {BiRightArrow,BiLeftArrow} from 'react-icons/bi'
+import React,{useEffect, useState} from 'react';
+import { HStack } from '@chakra-ui/layout';
 
 
-const QuestionLayout = ({primary,question,handleNext,response,handleChange}) => {
+const QuestionLayout = ({primary,question,handleNext,handleBack,response,handleChange,index,responseList}) => {
 
+    const [subQuestionAnswer, setSubQuestionAnswer] = useState("0");
+    useEffect(() => {
+        if(!question || !responseList) return;
+        if(!responseList[question]) return setSubQuestionAnswer("0");
+        console.log('responseList: ', responseList)
+        console.log(typeof responseList[question]);
+        setSubQuestionAnswer(responseList[question]);
+    },[question,responseList])
 
+    useEffect(() => {
+        console.log('subQuestionAnswer: ', subQuestionAnswer);
+    },[setSubQuestionAnswer])
 
     return (
         <Container alignItems='center' pt='15%' pb='10%' textAlign='center'>
             <Text mb='20px' fontSize='2xl' >{question}</Text>
             <Spacer/>
-            <RadioGroup value={response} onChange={value => handleChange(value)}  mb='40px' pl='15px'>
+            <RadioGroup value={primary ? response : subQuestionAnswer} onChange={value => {setSubQuestionAnswer(value); handleChange(value)}}  mb='40px' pl='15px'>
                 {primary ? <Stack spacing={19} direction="row" marginLeft = '170px'>
                     <Radio colorScheme="gray" value={"true"}>
                     Yes
@@ -55,9 +67,12 @@ const QuestionLayout = ({primary,question,handleNext,response,handleChange}) => 
                 </Stack>
                 }
             </RadioGroup>
-            <Button rightIcon={<BiRightArrow/>} bg='brand.900' size='lg' onClick={() => handleNext()}>
-                Next
-            </Button>
+            <HStack justifyContent="center">
+                <IconButton disabled={index === 0} icon={<BiLeftArrow/>} bg="none" color='gray' size='lg' onClick={() => handleBack()}/>
+                <Button rightIcon={<BiRightArrow/>} bg='brand.900' size='lg' onClick={() => handleNext()}>
+                    Next
+                </Button>
+            </HStack>
         </Container>
     );
 };
