@@ -2,29 +2,29 @@
     "I have problems at my workplace":{
         "Do you face low energy levels after a day at work?":{
             "questions":[
-                    "How much have your sleeping habits changed since you started work here?",
-                    "How much has your appetite changed since you started working here?",
-                    "How moody are you at work?",
-                    "How much have your relationships suffered as a result of work?",
-                    "How much of your outside commitments (anything you do other than work, e.g. basketball) suffered because of work?"
+                "How much have your sleeping habits changed since you started work here?",
+                "How much has your appetite changed since you started working here?",
+                "How moody are you at work?",
+                "How much have your relationships suffered as a result of work?",
+                "How much of your outside commitments (anything you do other than work, e.g. basketball) suffered because of work?"
             ]
         },
         "Do you ever worry about finances?":{
             "questions":[
-                "How satisfied are you with your salary?",
+                "How much are you not satisfied with your salary?",
                 "How much do you worry about losing your job?",
                 "How upset are you during your payday?",
-                "Assuming no privacy issues, are you feeling comfortable letting other people know your salary?",
-                "How much do you worry about meeting your expenses?"
+                "Assuming no privacy issues, how much are you feeling uncomfortable letting other people know your salary?",
+                "How much do you worry about meeting your expenses with your income?"
             ]
         },
         "Do you feel confident at work?":{
             "questions":[
-                "How comfortable are you with your bosses and colleagues?",
-                "Do you see yourself as a capable person?",
+                "How much do you feel uncomfortable with your bosses and colleagues?",
+                "How much do you see yourself as an incapable person?",
                 "How much do you struggle on completing tasks of your work?",
                 "How often do you work under pressure?",
-                "How will you rate your mental state at work? Really good is 10, really bad is 1"
+                "How will you rate your mental state at work? Really good is 1, really bad is 10"
             ]
         }
         
@@ -34,17 +34,17 @@
 
         "Are you not willing to go to school?":{
             "questions":[
-                "How comfortable are you in the class? ",
-                "How well are you able to cope up with the subjects?",
+                "How much do you feel uncomfortable in class? ",
+                "How much do you feel unable to cope up with the subjects?",
                 "How difficult are you when you are facing the faculty?"
             ]
         },
 
         "Are you not happy with your grades?":{
             "questions":[
-                "How much satisfied are you after receiving your grades? ",
+                "How often do you feel frustrated after receiving your grades? ",
                 "How much are the external factors affecting your grades? ",
-                "How much is the effort put for studying reflecting in your grades?",
+                "How much do you feel your grade does not reflect the effort you put in studying?",
                 "How much scared are you for exams overnight?"
             ]
         },
@@ -61,23 +61,25 @@
         "Do you have any issues with your family?":{
             "questions":[
                 "How much is your family issue affecting your mental health?",
-                "How well connected are you with your family?",
-                "How well does your family support you?",
+                "How much do you feel disconnected with your family?",
+                "How much do you think your family is not supporting your career/hobbies?",
                 "How much pressure are you facing from your family?"
             ]
         },
 
         "Are you facing any problems in love?":{
             "questions":[
-                "How well connected are you and your partner?",
-                "How much does your partner understands you?"
+                "How much do you feel disconnected between you and your partner?",
+                "How much do you feel your partner doesn't understand you?"
             ]
         },
 
         "Do you face any difficulties in expressing your opinions?":{
             "questions":[
-                "How well is your relationship with your relatives?",
-                "How well do you communicate with people?"
+                "How often do you feel like you are accepting something you disagree?",
+                "How much do you feel having trouble talking to people?",
+                "How much are you scared of being hated by others?",
+                "Rate the degree of trouble you have maintaining a good relationship with others."
             ]
         }
 
