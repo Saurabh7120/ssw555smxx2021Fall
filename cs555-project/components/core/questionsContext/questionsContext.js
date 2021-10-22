@@ -8,6 +8,8 @@ export const QuestionsContext = createContext({
     subQuestions:[],
     selectCategory: cat => {},
     selectPrimary: primary => {},
+    setFinalScore: s => {},
+    score:0
 })
 
 function QuestionsContextProvider({children}) {
@@ -15,6 +17,7 @@ function QuestionsContextProvider({children}) {
     const [selectedCategory,setSelectedCategory] = useState(null);
     const [primaryQuestions, setPrimaryQuestions] = useState([]);
     const [subQuestions, setSubQuestions] = useState([]);
+    const [score, setScore] = useState(0);
 
     useEffect(() => {
         let cat = Object.keys(data);
@@ -33,8 +36,12 @@ function QuestionsContextProvider({children}) {
         setSubQuestions(sub);
     }
 
+    const setFinalScore = s => {
+        setScore(s);
+    }
+
     return (
-        <QuestionsContext.Provider value={{categories,primaryQuestions,subQuestions,selectCategory,selectPrimary}}>
+        <QuestionsContext.Provider value={{categories,primaryQuestions,subQuestions,score,selectCategory,selectPrimary,setFinalScore}}>
             {children}
         </QuestionsContext.Provider>
     );
