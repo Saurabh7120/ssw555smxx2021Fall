@@ -11,7 +11,7 @@ const SubQuestions = () => {
     const [currentQuestionResponse, setCurrentQuestionResponse] = useState("1");
     const [currentIndex,setCurrentIndex] = useState(0);
     const [allResponses,setAllResponses] = useState({});
-    const {subQuestions} = useContext(QuestionsContext);
+    const {subQuestions,setFinalScore} = useContext(QuestionsContext);
 
     const handleChange = value => {
         let currentResponses = allResponses;
@@ -28,7 +28,18 @@ const SubQuestions = () => {
             
             setCurrentIndex(prevValue => prevValue + 1);
         }else{
-            console.log(allResponses);
+            let numberOfQuestions = Object.keys(allResponses).length;
+            let total = 0;
+            let avg = 0;
+            console.log("number of questions: ",numberOfQuestions);
+            for(let k in allResponses) {
+                total += parseInt(allResponses[k]);
+            }
+            console.log("total: ",total);
+            avg = total/numberOfQuestions;
+            setFinalScore(Math.floor(avg));
+
+            router.push("/solution");
         }
     }
 
