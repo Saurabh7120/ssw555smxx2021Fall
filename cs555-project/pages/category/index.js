@@ -1,5 +1,5 @@
-import {Layout} from "../components/core"
-import { PrimaryCategory } from "../components/primaryCategory"
+import {Layout} from "../../components/core"
+import { PrimaryCategory } from "../../components/primaryCategory"
 
 
 export default function CategoryPage() {
