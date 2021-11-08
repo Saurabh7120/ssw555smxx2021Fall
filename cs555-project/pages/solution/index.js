@@ -13,7 +13,7 @@ export default function SolutionPage() {
 
 
     function handleNext(){
-      router.push('./ending');
+      router.push('./feedback');
     }
 
 

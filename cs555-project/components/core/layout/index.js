@@ -5,13 +5,15 @@ import { UserContext } from '../authContext/authContext';
 import {BiLogOut} from "react-icons/bi";
 
 
+
 export const Layout = ({children}) => {
 
-    const user = useContext(UserContext);
+    const User = useContext(UserContext);
+
 
     return (
         <Flex direction='column' h='100vh' bg="brand.100">
-            {user && <Flex w='100vw' justify='flex-end'>
+            {User && <Flex w='100vw' justify='flex-end'>
                 <Button onClick={logOut} leftIcon={<BiLogOut/>} size='lg' m='5px' colorScheme='red' variant='ghost'>Logout</Button>
             </Flex>}
             {children}
