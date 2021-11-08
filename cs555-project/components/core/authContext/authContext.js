@@ -1,27 +1,59 @@
 import React, {useState, useEffect,  createContext} from "react";
 import { auth } from "../../../services/initFirebase";
-export const UserContext = createContext({user: null})
+export const UserContext = createContext({User: null})
 import { useRouter } from "next/dist/client/router";
+import { writeData, readData } from "../../firebase/cloudFirestore";
 
 export  const UserProvider = ({children}) => {
 const router = useRouter();
-  const [user, setuser] = useState(null)
+  const [User, setuser] = useState(null)
+  const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
   auth.onAuthStateChanged(async (user) => {
-      if(user) {
-          const { displayName, email }  = user;
+    try {
+        if(user) {
+          console.log('user: ', user.l)
           setuser({
+            userId,
             displayName,
             email
           });
-          router.push("/category");
+          const { displayName, email, l:userId }  = user;
+
+     
+          // const exist = await readData('users',
+          // userId,
+          // {
+          //   userId,
+          //   displayName,
+          //   email
+          // });
+          // console.log(exist);
+          // if(!exist) {
+          //   console.log('doesnt exist');
+            // await writeData(
+            //   'users',
+            //   userId,
+            //   {
+            //     userId,
+            //     displayName,
+            //     email
+            //   }
+            // )
+          // }
+      
       }else{
         setuser(null);
-          router.push("/login");
-      }
+        router.push('/login');
+      } 
+    } catch (error) {
+      console.log(error);
+    }
   })
   },[])
+
+
   return (
-    <UserContext.Provider value={user}>{children}</UserContext.Provider>
+    <UserContext.Provider value={User}>{children}</UserContext.Provider>
   )
 }
