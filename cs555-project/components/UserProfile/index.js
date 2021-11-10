@@ -17,7 +17,7 @@ export const UserProfile = ({userInfo}) => {
                 <Box textAlign='left' boxShadow={'lg'} borderRadius={'8px'} padding={'15px'} minH={'148px'} minW={'215px'}>
                     <Text fontSize="2xl" mb='10px' fontWeight="bold">Mental Score</Text>
                     <Text fontSize={'xl'} fontWeight={'bold'}>{userInfo.score} /<Text fontSize='md' as='span'>10</Text></Text>
-                    <Text fontSize={'sm'}> as of last time</Text>
+                    {userInfo.lastChecked && <Text fontSize={'sm'}>as of {userInfo.lastChecked}</Text>}
                 </Box>
             </HStack>
             <Button onClick={() => router.push('/category')}  boxShadow={'lg'} leftIcon={<BiLeftArrow/>} variant={'contained'} bg='brand.900' size='lg' color='white' >Back to App</Button>
