@@ -21,7 +21,6 @@ const LoginPage = () => {
             const created = await axios.post('http://localhost:5000/users/',User);
             if(created) {
               console.log(created);
-              setCurrentUser(created);
             }
           }
           const getUser = async id => {
