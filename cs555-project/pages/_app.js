@@ -6,6 +6,7 @@ import QuestionsContextProvider from '../components/core/questionsContext/questi
 import {UserProvider} from '../components/core/authContext/authContext';
 
 function MyApp({ Component, pageProps }) {
+
   return <ChakraProvider theme={theme}>
     <UserProvider>
       <QuestionsContextProvider>

@@ -5,6 +5,7 @@ import {FcGoogle} from 'react-icons/fc';
 import {signInWithGoogle} from '../../services/initFirebase';
 import { useRouter } from 'next/dist/client/router';
 import { UserContext } from '../../components/core/authContext/authContext';
+import axios from 'axios';
 
 
 const LoginPage = () => {
@@ -14,17 +15,35 @@ const LoginPage = () => {
     const User = useContext(UserContext);
   
     useEffect(() => {
-      let loggedIn = localStorage.getItem('loggedIn')
-      if(User) {
-        if(!loggedIn) {
-          router.push('/category');
-        }else{
-          localStorage.setItem('loggedIn',true);
-        }
-      }else{
-        router.push('/login');
+      try {
+        if(User) {
+          const createUser = async () => {
+            const created = await axios.post('http://localhost:5000/users/',User);
+            if(created) {
+              console.log(created);
+              setCurrentUser(created);
+            }
+          }
+          const getUser = async id => {
+            const {data} = await axios.get(`http://localhost:5000/users/${id}`);
+            console.log(data);
+            if(!data) {
+              createUser();
+            }
+            // else{
+            //   setCurrentUser(data);
+            // }
+            router.push('/category');
+          }
+          getUser(User.id);
       }
+      } catch (error) {
+        console.log(error);
+      }
+
     },[User])
+
+
 
     return(
         <Layout>
