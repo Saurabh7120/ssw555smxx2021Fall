@@ -1,0 +1,26 @@
+{
+  "name": "m-health-server",
+  "version": "1.0.0",
+  "description": "This is a server for m-health app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "PORT=5000 nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saurabh7120/ssw555smxx2021Fall.git"
+  },
+  "author": "Saurabh Mane, Keye Li, Aditya Menon, SaiNikhil Reddy, Reshma Manoj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saurabh7120/ssw555smxx2021Fall/issues"
+  },
+  "homepage": "https://github.com/Saurabh7120/ssw555smxx2021Fall#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.4",
+    "nodemon": "^2.0.14"
+  }
+}
