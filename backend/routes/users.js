@@ -41,6 +41,25 @@ router.get('/:id', async (req,res) => {
         console.log(error);
         res.status(500).json({error:error});
     }
+});
+
+router.patch('/', async (req,res) => {
+    try {
+        const data = req.body;
+        if(!data.id || (!data.score && (data.score === null || data.score === undefined))) {
+            res.status(400).json({error: "Please pass all the fields"});
+            return;
+        }
+        if(typeof data.id !== "string" || typeof data.score !== 'number') {
+            res.status(400).json({error: "Invalid type of data"});
+            return;
+        }
+        let updated = await users.updateScore(data.id, data.score);
+        res.json(updated);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error:error});
+    }
 })
 
 module.exports = router;

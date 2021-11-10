@@ -18,7 +18,8 @@ const createUser = async data => {
     let currentTime = getCurrentTime();
     let newEntry = {
         ...data,
-        createdAt: currentTime
+        createdAt: currentTime,
+        lastChecked: null
     }
 
     const newEntryInfo = await collection.insertOne(newEntry);
@@ -46,7 +47,29 @@ const getUser = async id => {
     return found;
 }
 
+const updateScore = async (id,score) => {
+    if(!id || (!score && (score === null || score === undefined))) throw "Please pass all fields";
+    if(typeof id !== "string" || typeof score !== 'number') throw "Invalid param types";
+
+    let collection = await users();
+    let found = await collection.findOne({id: id});
+    if(!found) throw "could not find any user with that ID";
+
+    let newUpdate = {
+        score: score,
+        lastChecked: getCurrentTime()
+    }
+
+    const updatedInfo = await collection.updateOne({id: id},{$set: newUpdate});
+    if(updatedInfo.modifiedCount === 0) throw `${found.name} could not be modified`;
+    let updatedRecord = await collection.findOne({id: id});
+    if(!updatedRecord) throw "could not find any updated record with that ID";
+
+    return updatedRecord;
+}
+
 module.exports = {
     createUser,
-    getUser
+    getUser,
+    updateScore
 }
