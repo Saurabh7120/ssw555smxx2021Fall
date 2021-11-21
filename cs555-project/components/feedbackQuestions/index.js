@@ -10,7 +10,7 @@ const FeedbackQuestions = () => {
 
     return (
         <Container alignItems='center' pt='10%' pb='10%' textAlign='center'>
-            <Text fontWeight='bolder' fontSize='4xl' mb='50px'>Give some feedback</Text>
+            <Text fontWeight='bolder' fontSize='4xl' mb='50px'>Give us some feedback</Text>
             <Text mb='20px' fontSize='2xl' >Are you feeling better?</Text>
             <RadioGroup  value={answers['1'] && answers['1']} onChange={value => setAnswers(prevValue => {
                 return {
