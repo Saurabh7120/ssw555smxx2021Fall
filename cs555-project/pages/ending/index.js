@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Text,VStack } from "@chakra-ui/layout"
+import { Text,VStack, HStack } from "@chakra-ui/layout"
 import {Layout} from "../../components/core"
 import { QuestionsContext } from "../../components/core/questionsContext/questionsContext"
 import { Button } from "@chakra-ui/button";
@@ -20,18 +20,21 @@ export default function EndingPage(){
 
     return (
         <Layout >
-          <VStack mt='auto' mb='auto'>
-              <Text fontSize='2xl'>This is the end</Text>
-              <Text fontSize='4xl'>Thank you for using the web</Text>
-              <Button bg='brand.900' size='lg' marginTop = '50px' onClick = {()=>handleNext1()}>
+            <VStack mt = '230px' mb='40px'>
+                <Text fontSize='2xl'>This is the end</Text>
+                <Text fontSize='4xl'>Thank you for using the web</Text>
+              
+            </VStack>
+
+            <HStack spacing = '30px' justifyContent = 'center'>
+                <Button bg='brand.900' size='lg'  onClick = {()=>handleNext1()}>
                 Back to Home
                 </Button>
 
-                <Button bg='brand.900' size='lg' marginTop = '50px' onClick = {()=>handleNext2()}>
+                <Button bg='brand.900' size='lg'   onClick = {()=>handleNext2()}>
                 View Profile
                 </Button> 
-          </VStack>
-
+            </HStack>
           
 
           
