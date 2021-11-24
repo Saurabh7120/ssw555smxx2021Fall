@@ -12,15 +12,17 @@ const LoginPage = () => {
 
     const router = useRouter();
 
-    const User = useContext(UserContext);
+    const {User,setuser,loggedIn} = useContext(UserContext);
   
     useEffect(() => {
       try {
-        if(User) {
+        if(!loggedIn) return; 
+          console.log(User);
           const createUser = async () => {
-            const created = await axios.post('http://localhost:5000/users/',User);
+            const created = await axios.post('http://localhost:5000/users/',loggedIn);
             if(created) {
               console.log(created);
+              setuser(created);
             }
           }
           const getUser = async id => {
@@ -29,18 +31,21 @@ const LoginPage = () => {
             if(!data) {
               createUser();
             }
-            // else{
-            //   setCurrentUser(data);
-            // }
+            else{
+              setuser(data);
+            }
             router.push('/category');
           }
-          getUser(User.id);
-      }
+          if(loggedIn && !loggedIn.score) {
+            getUser(loggedIn.id);
+          }else{
+            router.push('/category');
+          }
       } catch (error) {
         console.log(error);
       }
 
-    },[User])
+    },[loggedIn])
 
 
 

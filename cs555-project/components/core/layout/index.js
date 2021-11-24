@@ -12,17 +12,17 @@ import { useRouter } from 'next/dist/client/router';
 export const Layout = ({children}) => {
 
     const router = useRouter();
-    const User = useContext(UserContext);
+    const {loggedIn} = useContext(UserContext);
 
     
     return (
-        <Flex direction='column' h='100vh' bg="brand.100">
-            {User && <Flex w='100vw' justify='flex-end'>
-                <LeftOption/>
-                <Button onClick={logOut} leftIcon={<BiLogOut/>} size='lg' m='5px' colorScheme='red' variant='ghost'>Logout</Button>
-            </Flex>}
-            {children}
-        </Flex>
+            <Flex direction='column' h='100vh' bg="brand.100">
+                {loggedIn  && <Flex w='100vw' justify='flex-end'>
+                    <LeftOption/>
+                    <Button onClick={logOut} leftIcon={<BiLogOut/>} size='lg' m='5px' colorScheme='red' variant='ghost'>Logout</Button>
+                </Flex>}
+                {children}
+            </Flex>
     );
 
     

@@ -9,7 +9,7 @@ export default function UserProfilePage() {
 
     const [currentUser, setCurrentUser] = useState(null)
 
-    const User = useContext(UserContext);
+    const {User} = useContext(UserContext);
 
     useEffect(() => {
         if(User) {
