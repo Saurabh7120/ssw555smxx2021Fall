@@ -2,13 +2,12 @@ import React, {useState, useEffect,  createContext} from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../../services/initFirebase";
 import { useRouter } from "next/dist/client/router";
-import { writeData, readData } from "../../firebase/cloudFirestore";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore"; 
-import { db } from "../../../services/initFirebase";
+import axios from "axios";
 
-export const UserContext = createContext({User: null})
 
-export  const UserProvider = ({children}) => {
+export const UserContext = createContext()
+
+const UserContextProvider = ({children}) => {
 const router = useRouter();
   const [User, setuser] = useState(null)
   const [loggedIn, setLoggedIn] = useState(false);
@@ -21,50 +20,14 @@ const router = useRouter();
 
           const { displayName, email, uid }  = user;
 
-          setuser({
+          setLoggedIn({
             id: uid,
             name: displayName,
-            email: email,
-            score: 0
+            email: email
           });
-          // const document = doc(db, `users/${userId}`);
-          // console.log(document);
-          // setDoc(document, {
-          //   _id: userId,
-          //   name: displayName,
-          //   email: email
-          // })
-          // const docRef = await addDoc(collection(db, 'users'), {
-          //   _id: userId,
-          //   name: displayName,
-          //   email: email
-          // });
-         
-          // console.log("Document written with ID: ", docRef.id);
-     
-          // const exist = await readData('users',
-          // userId,
-          // {
-          //   userId,
-          //   displayName,
-          //   email
-          // });
-          // console.log(exist);
-          // if(!exist) {
-          //   console.log('doesnt exist');
-     
-            // await writeData(
-            //   'users',
-            //   userId,
-            //   {
-            //     _id: userId,
-            //     name: displayName,
-            //     email: email
-            //   }
-            // )
-          // }
       
       }else{
+        setLoggedIn(null);
         setuser(null);
         router.push('/login');
       } 
@@ -74,8 +37,34 @@ const router = useRouter();
   })
   },[])
 
+  useEffect(() => {
+    if(!User && loggedIn) {
+      const createUser = async () => {
+        const created = await axios.post('http://localhost:5000/users/',loggedIn);
+        if(created) {
+          console.log(created);
+          setuser(created);
+        }
+      }
+      const getUser = async id => {
+        const {data} = await axios.get(`http://localhost:5000/users/${id}`);
+        console.log(data);
+        if(!data) {
+          createUser();
+        }
+        else{
+          setuser(data);
+        }
+      }
+  
+        getUser(loggedIn.id);
+  
+    }
+  },[User,loggedIn])
 
   return (
-    <UserContext.Provider value={User}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{User, setuser,loggedIn}}>{children}</UserContext.Provider>
   )
 }
+
+export default UserContextProvider;

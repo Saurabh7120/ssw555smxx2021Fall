@@ -1,12 +1,34 @@
-import React,{useState} from 'react';
+import React,{useContext, useState} from 'react';
 import { Container,Text,Spacer,Stack,Button, Radio, RadioGroup ,IconButton  } from '@chakra-ui/react';
 import { useRouter } from 'next/dist/client/router';
+import { UserContext } from '../core/authContext/authContext';
+import axios from 'axios';
 
 const FeedbackQuestions = () => {
     const [answers, setAnswers] = useState({})
 
     const router = useRouter();
+
+    const {User,setuser} = useContext(UserContext);
     
+    const handleSubmit = async () => {
+        try {
+            console.log(User);
+            const {data} = await axios.patch(`http://localhost:5000/users/feedback/${User.id}`,{
+                scoreId: User.score[0].id,
+                answer1: answers["1"],
+                answer2: answers["2"]
+            });
+            if(data){
+                console.log(data);
+                setuser(data);
+            }
+            router.push('/ending');
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     return (
         <Container alignItems='center' pt='10%' pb='10%' textAlign='center'>
@@ -43,7 +65,7 @@ const FeedbackQuestions = () => {
                     </Radio>
                 </Stack>
             </RadioGroup>
-            <Button bg='brand.900' size='lg' marginTop = '20px' onClick = {()=> router.push('/ending')}>
+            <Button bg='brand.900' size='lg' marginTop = '20px' onClick = {handleSubmit}>
                 Submit
               </Button>
         </Container>

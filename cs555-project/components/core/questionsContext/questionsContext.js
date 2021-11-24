@@ -2,19 +2,12 @@ import React,{createContext,useState,useEffect} from 'react';
 import data from "../../../data/data";
 
 
-export const QuestionsContext = createContext({
-    categories:[],
-    primaryQuestions:[],
-    subQuestions:[],
-    selectCategory: cat => {},
-    selectPrimary: primary => {},
-    setFinalScore: s => {},
-    score:0
-})
+export const QuestionsContext = createContext()
 
 function QuestionsContextProvider({children}) {
     const [categories, setCategories] = useState([]);
     const [selectedCategory,setSelectedCategory] = useState(null);
+    const [selectedPrimary, setSelectedPrimary] = useState(null);
     const [primaryQuestions, setPrimaryQuestions] = useState([]);
     const [subQuestions, setSubQuestions] = useState([]);
     const [score, setScore] = useState(0);
@@ -32,6 +25,7 @@ function QuestionsContextProvider({children}) {
     }
 
     const selectPrimary = primary => {
+        setSelectedPrimary(primary);
         let sub = data[selectedCategory][primary].questions;
         setSubQuestions(sub);
     }
@@ -41,7 +35,7 @@ function QuestionsContextProvider({children}) {
     }
 
     return (
-        <QuestionsContext.Provider value={{categories,primaryQuestions,subQuestions,score,selectCategory,selectPrimary,setFinalScore}}>
+        <QuestionsContext.Provider value={{categories,primaryQuestions,subQuestions,score,selectCategory,selectPrimary,setFinalScore,selectedCategory,selectedPrimary}}>
             {children}
         </QuestionsContext.Provider>
     );
