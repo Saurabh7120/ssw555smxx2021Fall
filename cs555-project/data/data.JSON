@@ -2,29 +2,29 @@
     "I have problems at my workplace":{
         "Do you face low energy levels after a day at work?":{
             "questions":[
-                "How much have your sleeping habits changed since you started work here?",
-                "How much has your appetite changed since you started working here?",
-                "How moody are you at work?",
-                "How much have your relationships suffered as a result of work?",
-                "How much of your outside commitments (anything you do other than work, e.g. basketball) suffered because of work?"
+                "How much have your sleeping habits changed since you started work here? (1: didn't change at all; 10: changed a lot)",
+                "How much has your appetite changed since you started working here? (1: didn't change at all; 10: changed a lot)",
+                "How moody are you at work? (1: not at all; 10: very moody)",
+                "How much have your relationships suffered as a result of work? (1: not at all; 10: suffered a lot)",
+                "How much of your outside commitments (anything you do other than work, e.g. basketball) suffered because of work? (1: not at all; 10: suffered a lot)"
             ]
         },
         "Do you ever worry about finances?":{
             "questions":[
-                "How much are you not satisfied with your salary?",
-                "How much do you worry about losing your job?",
-                "How upset are you during your payday?",
-                "Assuming no privacy issues, how much are you feeling uncomfortable letting other people know your salary?",
-                "How much do you worry about meeting your expenses with your income?"
+                "How much are you not satisfied with your salary? (1: feeling good about your salary; 10: very upset about your salary)",
+                "How much do you worry about losing your job? (1: not at all; 10: worry about it all the time)",
+                "How upset are you during your payday? (1: not at all; 10: very upset)",
+                "Assuming no privacy issues, how much are you feeling uncomfortable letting other people know your salary? (1: very comfortable; 10: not at all)",
+                "How much do you worry about meeting your expenses with your income? (1: not at all; 10: worry about it a lot)"
             ]
         },
         "Do you feel confident at work?":{
             "questions":[
-                "How much do you feel uncomfortable with your bosses and colleagues?",
-                "How much do you see yourself as an incapable person?",
-                "How much do you struggle on completing tasks of your work?",
-                "How often do you work under pressure?",
-                "How will you rate your mental state at work? Really good is 1, really bad is 10"
+                "How much do you feel uncomfortable with your bosses and colleagues? (1: not at all; 10: very uncomfotable)",
+                "How much do you see yourself as an incapable person? (1: you are confident about yourself; 10: you feel like you can't do anything)",
+                "How much do you struggle on completing tasks of your work? (1: not at all; 10: struggle a lot)",
+                "How often do you work under pressure? (1: not at all; 10: you work under pressure all the time)",
+                "How will you rate your mental state at work? (1: really good; 10: really bad)"
             ]
         }
         
@@ -34,25 +34,25 @@
 
         "Are you not willing to go to school?":{
             "questions":[
-                "How much do you feel uncomfortable in class? ",
-                "How much do you feel unable to cope up with the subjects?",
-                "How difficult are you when you are facing the faculty?"
+                "How much do you feel uncomfortable in class? (1: not at all; 10: very uncomfortable)",
+                "How much do you feel unable to cope up with the subjects? (1: not at all; 10: can't follow at all)",
+                "How difficult are you when you are facing the faculty? (1: pretty easy; 10: very difficult)"
             ]
         },
 
         "Are you not happy with your grades?":{
             "questions":[
-                "How often do you feel frustrated after receiving your grades? ",
-                "How much are the external factors affecting your grades? ",
-                "How much do you feel your grade does not reflect the effort you put in studying?",
-                "How much scared are you for exams overnight?"
+                "How often do you feel frustrated after receiving your grades? (1: not at all; 10: always frustrated)",
+                "How much are the external factors affecting your grades? (1: not at all; 10: your grades are hugely affected)",
+                "How much do you feel your grade does not reflect the effort you put in studying? (1: your grades are cosistent with your effort; 10: your grades don't reflect your effort at all)",
+                "How much scared are you for exams overnight? (1: you are relaxed; 10: you are very scared)"
             ]
         },
 
         "Do you face bullying at school?":{
             "questions":[
-                "Rate the severity of bullying you are facing",
-                "How much traumatized are you after bullying ?"
+                "Rate the severity of bullying you are facing (1: not at all; 10: very severe)",
+                "How much traumatized are you after bullying (1: you are ok; 10: you feel really bad)?"
             ]
         }
     },
@@ -60,26 +60,26 @@
     "I have problems with personal relationship":{
         "Do you have any issues with your family?":{
             "questions":[
-                "How much is your family issue affecting your mental health?",
-                "How much do you feel disconnected with your family?",
-                "How much do you think your family is not supporting your career/hobbies?",
-                "How much pressure are you facing from your family?"
+                "How much is your family issue affecting your mental health? (1: not at all; 10: it affects a lot)",
+                "How much do you feel disconnected with your family? (1: not at all; 10: you are totally disconnected)",
+                "How much do you think your family is not supporting your career/hobbies? (1:your family is quite nice; 10: your family don't support you at all)",
+                "How much pressure are you facing from your family? (1: not at all; 10: a lot of pressure)"
             ]
         },
 
         "Are you facing any problems in love?":{
             "questions":[
-                "How much do you feel disconnected between you and your partner?",
-                "How much do you feel your partner doesn't understand you?"
+                "How much do you feel disconnected between you and your partner? (1: not at all; 10: you are totally disconnected)",
+                "How much do you feel your partner doesn't understand you? (1: he/she understands you pretty well; 10: he/she doesn't understand you at all)"
             ]
         },
 
         "Do you face any difficulties in expressing your opinions?":{
             "questions":[
-                "How often do you feel like you are accepting something you disagree?",
-                "How much do you feel having trouble talking to people?",
-                "How much are you scared of being hated by others?",
-                "Rate the degree of trouble you have maintaining a good relationship with others."
+                "How often do you feel like you are accepting something you disagree? (1: not at all; 10: all the time)",
+                "How much do you feel having trouble talking to people? (1: not at all; 10: you can't talk with people at all)",
+                "How much are you scared of being hated by others? (1: not at all; 10: you are very scared about it)",
+                "Rate the degree of trouble you have maintaining a good relationship with others. (1: no trouble at all; 10: lots of trouble)"
             ]
         }
 
