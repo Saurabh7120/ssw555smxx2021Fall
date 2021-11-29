@@ -1,4 +1,4 @@
-import { Container, Text,Spacer,Select,Button, SlideFade, useDisclosure, useToast } from '@chakra-ui/react';
+import { Container, Text,Spacer,Select,Button, SlideFade, useDisclosure, useToast, Progress } from '@chakra-ui/react';
 import { QuestionsContext } from '../core/questionsContext/questionsContext';
 import {BiRightArrow} from 'react-icons/bi'
 import React,{useState,useContext, useEffect} from 'react';
@@ -62,8 +62,9 @@ const PrimaryCategory = () => {
             </SlideFade>
             :
             <SlideFade in={isOpen} offsetY="50px">
-                {isOpen && <Container alignItems='center' pt='10%' pb='10%' textAlign='center' >
+                {isOpen && <Container display={'flex'} justifyContent={'center'} flexWrap={'wrap'} alignItems='center' pt='10%' pb='10%' textAlign='center' >
                     <Text mb='50px' fontSize='4xl' color='brand.900'>Let's narrow down your issue a bit...</Text>
+                    <Progress w={'50%'} size='xs' isIndeterminate colorScheme={"purple"}/>
                 </Container>}
             </SlideFade>
         )

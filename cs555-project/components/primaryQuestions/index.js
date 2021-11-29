@@ -1,4 +1,4 @@
-import { SlideFade,useDisclosure,Container,Text } from '@chakra-ui/react';
+import { SlideFade,useDisclosure,Container,Text, Progress } from '@chakra-ui/react';
 import { QuestionsContext } from '../core/questionsContext/questionsContext';
 import { QuestionLayout } from '../core/primaryLayout/questionLayout';
 import React,{useContext,useState} from 'react';
@@ -47,8 +47,9 @@ const Questions = () => {
         </SlideFade>
         :
         <SlideFade in={isOpen} offsetY="50px">
-                {isOpen && <Container alignItems='center' pt='10%' pb='10%' textAlign='center' >
+                {isOpen && <Container display={'flex'} justifyContent={'center'} flexWrap={'wrap'} alignItems='center' pt='10%' pb='10%' textAlign='center' >
                     <Text mb='50px' fontSize='4xl' color='brand.900'>We have some questions created for you, so lets get started...</Text>
+                    <Progress w={'50%'} size='xs' isIndeterminate colorScheme={"purple"}/>
                 </Container>}
             </SlideFade>
     );

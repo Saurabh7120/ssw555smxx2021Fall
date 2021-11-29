@@ -1,4 +1,4 @@
-import { SlideFade,useToast } from '@chakra-ui/react';
+import { SlideFade,useToast,Text,Progress,Container, useDisclosure } from '@chakra-ui/react';
 import { QuestionsContext } from '../core/questionsContext/questionsContext';
 import { UserContext } from '../core/authContext/authContext';
 import { QuestionLayout } from '../core/primaryLayout/questionLayout';
@@ -11,11 +11,13 @@ import { useRouter } from 'next/dist/client/router';
 const SubQuestions = () => {
     const router = useRouter();
     const toast = useToast()
-    const [currentQuestionResponse, setCurrentQuestionResponse] = useState("1");
     const [currentIndex,setCurrentIndex] = useState(0);
     const [allResponses,setAllResponses] = useState({});
     const {subQuestions,setFinalScore,selectedCategory,selectedPrimary} = useContext(QuestionsContext);
+    const [loading, setLoading] = useState(false);
     const {User,setuser} = useContext(UserContext);
+    const {isOpen, onOpen} = useDisclosure();
+
 
     const handleChange = value => {
         let currentResponses = allResponses;
@@ -24,16 +26,18 @@ const SubQuestions = () => {
             setAllResponses(currentResponses);
     }
 
-    const handleNext = async () => {
+    const handleNext = () => {
         try {
             let currentResponses = allResponses;
             let currentQuestion = subQuestions[currentIndex];
             if(!currentResponses[currentQuestion]) return toast({title:"Please select an option",status:'warning',duration:'3000'});
             if(currentIndex < subQuestions.length - 1) {
-                
                 setCurrentIndex(prevValue => prevValue + 1);
             }else{
-                let numberOfQuestions = Object.keys(allResponses).length;
+                setLoading(true);
+                setTimeout(async () => {
+                    onOpen();
+                    let numberOfQuestions = Object.keys(allResponses).length;
                 let total = 0;
                 let avg = 0;
                 console.log("number of questions: ",numberOfQuestions);
@@ -77,10 +81,17 @@ const SubQuestions = () => {
                 console.log(data);
                 setuser(data);
                 if(data) {
-                    router.push(`/solution?s=${solution}`);
+                    setTimeout(() => {
+                        router.push(`/solution?s=${solution}`);
+                    },3000);
+                   
                 }else{
+                    setLoading(false);
                     return toast({title:"Could not update user",status:'error',duration:'3000'});
                 }
+           
+                }, 1000);
+                
             }
         } catch (error) {
             console.log(error);
@@ -92,7 +103,7 @@ const SubQuestions = () => {
     }
 
     return (
-        subQuestions && <SlideFade in={true} offsetY='50px'>
+        (subQuestions && !loading ) ? <SlideFade in={true} offsetY='50px'>
             <QuestionLayout 
                 primary={false}
                 question={subQuestions[currentIndex]}
@@ -102,6 +113,12 @@ const SubQuestions = () => {
                 handleChange={handleChange}
                 handleBack={handleBack}
             />
+        </SlideFade> :
+        <SlideFade in={isOpen} offsetY="50px">
+            {isOpen && <Container display={'flex'} justifyContent={'center'} flexWrap={'wrap'} alignItems='center' pt='10%' pb='10%' textAlign='center' >
+                <Text mb='50px' fontSize='4xl' color='brand.900'>Analyzing your answers...</Text>
+                <Progress w={'50%'} size='xs' isIndeterminate colorScheme={"purple"}/>
+            </Container>}
         </SlideFade>
     );
 };
