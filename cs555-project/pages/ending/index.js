@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Text,VStack, HStack } from "@chakra-ui/layout"
 import {Layout} from "../../components/core"
 import { QuestionsContext } from "../../components/core/questionsContext/questionsContext"
@@ -8,6 +8,12 @@ import { useRouter } from 'next/dist/client/router';
 export default function EndingPage(){
 
     const router = useRouter();
+
+    const {finish} = useContext(QuestionsContext);
+
+    useEffect(() => {
+        finish();
+    },[]);
 
     function handleNext1(){
         router.push('./category');
