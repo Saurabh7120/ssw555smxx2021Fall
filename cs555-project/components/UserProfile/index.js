@@ -14,13 +14,25 @@ import {Box,
 } from "@chakra-ui/react";
 import {BiLeftArrow} from "react-icons/bi"
 import { useRouter } from "next/dist/client/router";
+import { useEffect } from "react";
+import questionMap from "../../data/questionMap";
 
 export const UserProfile = ({userInfo}) => {
 
     const router = useRouter();
 
+    console.log(questionMap);
+
+    useEffect(()=>{
+        console.log(questionMap);
+    },[questionMap])
+
     return(
-        userInfo && <Container  maxW="container.lg" alignItems='center' pt='15%' pb='10%' textAlign='center'>
+        userInfo && <Container  maxW="container.lg" alignItems='center' pt='5%' pb='10%' textAlign='center'>
+            <HStack mb='10px'>
+                <Text><strong>Name: </strong>{userInfo.name}</Text>
+                <Text><strong>Email: </strong>{userInfo.email}</Text>
+            </HStack>
             <Table variant="simple" w={'100%'} boxShadow={'lg'} borderRadius={'lg'}>
                 <TableCaption>Usage History</TableCaption>
                 <Thead>
@@ -38,7 +50,7 @@ export const UserProfile = ({userInfo}) => {
                         <Tr key={i.id}>
                         <Td>{idx + 1}</Td>
                         <Td>{i.category}</Td>
-                        <Td>{i.primary}</Td>
+                        <Td>{questionMap[i.primary]}</Td>
                         <Td 
                             color={
                             i.score >=1 && i.score <3  ?
