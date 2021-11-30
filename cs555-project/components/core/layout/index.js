@@ -21,7 +21,7 @@ export const Layout = ({children}) => {
                     <Heading color={'brand.900'}>M-Health</Heading>
                     {loggedIn  && <HStack>
                         <LeftOption/>
-                        <Button onClick={logOut} leftIcon={<BiLogOut/>} size='lg' m='5px' colorScheme='red' variant='ghost'>Logout</Button>
+                        <Button onClick={() => router.push('/logout')} leftIcon={<BiLogOut/>} size='lg' m='5px' colorScheme='red' variant='ghost'>Logout</Button>
                     </HStack>}
                 </Flex>
                 {children}

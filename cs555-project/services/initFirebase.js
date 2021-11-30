@@ -2,10 +2,9 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
-import { getAnalytics, logEvent } from "firebase/analytics";
-import { getPerformance } from "firebase/performance";
 import "firebase/firestore"
 import "firebase/storage"
+
 
 
 
@@ -19,6 +18,8 @@ const app = initializeApp({
   appId: process.env.NEXT_PUBLIC_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID
 });
+
+
 
 
 export const auth = getAuth();
