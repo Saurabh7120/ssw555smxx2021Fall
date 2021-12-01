@@ -19,11 +19,12 @@ function QuestionsContextProvider({children}) {
         let category = localStorage.getItem("category");
         let primary = localStorage.getItem("primary");
         let s = localStorage.getItem("score");
-   
-            setFinalScore(s);
-            selectCategory(category);
+
+            if(s) setFinalScore(s);
+            
+            if(category) selectCategory(category);
       
-            selectPrimary(primary);     
+            if(primary) selectPrimary(primary);     
    
     },[]);
 
