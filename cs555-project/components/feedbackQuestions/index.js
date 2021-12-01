@@ -13,14 +13,12 @@ const FeedbackQuestions = () => {
     
     const handleSubmit = async () => {
         try {
-            console.log(User);
             const {data} = await axios.patch(`http://localhost:5000/users/feedback/${User.id}`,{
                 scoreId: User.score[0].id,
                 answer1: answers["1"],
                 answer2: answers["2"]
             });
             if(data){
-                console.log(data);
                 setuser(data);
             }
             router.push('/ending');

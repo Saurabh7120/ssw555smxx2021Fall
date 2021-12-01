@@ -16,8 +16,6 @@ const router = useRouter();
   onAuthStateChanged(auth, async (user) => {
     try {
         if(user) {
-          console.log('user: ', user.uid)
-
           const { displayName, email, uid }  = user;
 
           setLoggedIn({
@@ -25,7 +23,10 @@ const router = useRouter();
             name: displayName,
             email: email
           });
-      
+          localStorage.setItem('id',uid);
+          localStorage.setItem('name',displayName);
+          localStorage.setItem('email',email);
+
       }else{
         setLoggedIn(null);
         setuser(null);
@@ -38,32 +39,49 @@ const router = useRouter();
   },[])
 
   useEffect(() => {
-    if(!User && loggedIn) {
-      const createUser = async () => {
-        const created = await axios.post('http://localhost:5000/users/',loggedIn);
+
+      const createUser = async data => {
+        const created = await axios.post('http://localhost:5000/users/',data);
         if(created) {
-          console.log(created);
-          setuser(created);
+          setuser(created.data);
         }
       }
-      const getUser = async id => {
-        const {data} = await axios.get(`http://localhost:5000/users/${id}`);
-        console.log(data);
+      const getUser = async loginData => {
+        const {data} = await axios.get(`http://localhost:5000/users/${loginData.id}`);
         if(!data) {
-          createUser();
+          createUser(loginData);
         }
         else{
           setuser(data);
         }
       }
-  
-        getUser(loggedIn.id);
-  
-    }
+      if(!User && loggedIn) {
+        getUser(loggedIn);
+      }else{
+        if(!loggedIn) {
+          let id = localStorage.getItem('id');
+          let name = localStorage.getItem('name');
+          let email = localStorage.getItem('email');
+          if(id || name || email) {
+            setLoggedIn({
+              id,
+              name,
+              email
+            })
+          }
+        }
+
+      }
   },[User,loggedIn])
 
+  const destroy = () => {
+    localStorage.removeItem('id');
+    localStorage.removeItem('name');
+    localStorage.removeItem('email');
+  }
+
   return (
-    <UserContext.Provider value={{User, setuser,loggedIn}}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{User, setuser,loggedIn,destroy}}>{children}</UserContext.Provider>
   )
 }
 
