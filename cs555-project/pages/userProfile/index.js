@@ -23,7 +23,7 @@ export default function UserProfilePage() {
                 console.log(error);
             }
         }
-    },[])
+    },[User])
 
     return(
         <Layout>

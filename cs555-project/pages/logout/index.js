@@ -1,14 +1,17 @@
 import { Box, Progress, Text, VStack } from "@chakra-ui/react"
 import { useContext, useEffect } from "react";
+import { UserContext } from "../../components/core/authContext/authContext";
 import { QuestionsContext } from "../../components/core/questionsContext/questionsContext";
 import { logOut } from "../../services/initFirebase";
 
 const Logout = () => {
 
     const {finish} = useContext(QuestionsContext);
+    const {destroy} = useContext(UserContext);
 
     useEffect(() => {
         finish();
+        destroy();
         setTimeout(() => {
             logOut();
         },2000)
