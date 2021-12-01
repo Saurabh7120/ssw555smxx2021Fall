@@ -47,7 +47,7 @@ const FeedbackQuestions = () => {
                     </Radio>
                 </Stack>
             </RadioGroup>
-            <Text mb='20px' fontSize='2xl' >Would you like a change in the content the next time you visit?</Text>
+            <Text mb='20px' fontSize='2xl' >Do you think we need to improve our content?</Text>
             <RadioGroup  value={answers['2'] && answers['2']} onChange={value => setAnswers(prevValue => {
                 return {
                     ...prevValue,
